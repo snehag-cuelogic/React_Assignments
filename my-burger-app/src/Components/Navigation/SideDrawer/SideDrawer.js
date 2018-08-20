@@ -21,7 +21,6 @@ const sideDrawer = (props) => {
                 <nav>
                     <NavigationItems />
                 </nav>
-
             </div>
         </Auxillary>
     );
