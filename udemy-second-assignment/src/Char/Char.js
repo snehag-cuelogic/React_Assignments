@@ -1,19 +1,21 @@
 import React from 'react';
 
-const Char = (props) => {
-
-    const customStyle = {
+const char = (props) => {
+    const style = {
         display: 'inline-block',
         padding: '16px',
         margin: '16px',
-        border: '1px solid black'
-    }
+        border: '1px solid black',
+        textAlign: 'center',
+        transition: 'transform .2s' /* Animation */,
+    
+    };
+
     return (
-        <div style={customStyle} >
-        <p onClick={props.click}> {props.inputString}</p>
-        
+        <div style={style} onClick={props.clicked}>
+            {props.character}
         </div>
-    )
+    );
 };
 
-export default Char;
+export default char;

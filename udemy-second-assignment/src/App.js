@@ -1,49 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import Validation from "./Validation/Validation";
-import Char from "./Char/Char";
+import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
-
   state = {
-    something: '',
-    stringLength: ''
+    userInput: ''
   }
 
-  changeHandler = (event) => {
-
-    this.setState({
-      something: event.target.value,
-      stringLength: event.target.length
-    });
+  inputChangedHandler = (event) => {
+    this.setState({ userInput: event.target.value });
   }
 
-  //to delete the character
-  onDeleteHandler = (index) => {
-    const text = this.state.something.split('');
-    text.splice(index,1);
-    const updatedString = text.join('');
-    this.setState({
-      something:updatedString
-    });
+  deleteCharHandler = (index) => {
+    const text = this.state.userInput.split('');
+    text.splice(index, 1);
+    const updatedText = text.join('');
+    this.setState({ userInput: updatedText });
   }
 
   render() {
-
-    let charList = null; 
-    charList= this.state.something.split('').map((char, index) => {
-      return <Char 
-      inputString={char} 
-      key={index}  
-      click={this.onDeleteHandler(index)} />;
+    const charList = this.state.userInput.split('').map((ch, index) => {
+      return <Char
+        character={ch}
+        key={index}
+        clicked={() => this.deleteCharHandler(index)} />;
     });
 
     return (
       <div className="App">
-        <p>Udemy Second Assignment</p>
-        <input type="text" placeholder="Enter a string.." onChange={this.changeHandler} />
-        <p>{this.state.something}</p>
-        <Validation stringLen={this.state.something.length} />
+        <input
+          type="text"
+          onChange={this.inputChangedHandler}
+          value={this.state.userInput} />
+        <p>{this.state.userInput}</p>
+        <Validation stringLen={this.state.userInput.length} />
         {charList}
       </div>
     );

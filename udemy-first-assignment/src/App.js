@@ -6,32 +6,28 @@ import UserOutput from './UserComponents/UserOutput';
 class App extends Component {
 
   state = {
-    UserOutput:[
-     { name: 'Sneha',
-    },
-     
-    ]
+    UserOutput: {
+      name: 'Sneha',
+    }
   }
-  changeHandler =(event)=>{
+  changeHandler = (event) => {
     this.setState({
-      UserOutput:[
-        {
-          name:event.target.value,
-        }
-      ]
+      UserOutput:
+      {
+        name: event.target.value,
+      }
     })
   }
-
 
   render() {
     return (
       <div className="App">
-       <p> Udemy first assignment</p>
-       <UserInput changeHandler={this.changeHandler} name={this.state.UserOutput[0].name}></UserInput>
+        <p> Udemy first assignment</p>
+        <UserInput changeHandler={this.changeHandler} name={this.state.UserOutput.name}></UserInput>
 
-       <UserOutput name={this.state.UserOutput[0].name}>
-       And this is Udemy assignment done by {this.state.UserOutput[0].name}
-       </UserOutput>
+        <UserOutput name={this.state.UserOutput.name}>
+          And this is Udemy assignment done by {this.state.UserOutput.name}
+        </UserOutput>
       </div>
     );
   }
